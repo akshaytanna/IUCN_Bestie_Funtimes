@@ -1,0 +1,114 @@
+
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+Three_Alpha_key<-readxl::read_xlsx("Data/Raw/ASFIS_sp_2021.xlsx") %>% 
+  rename(ALPHA_3_CODE="3A_CODE") %>%
+  select(1,3) %>% 
+  mutate(ISSCAAP=as.numeric(ISSCAAP)) %>% 
+  add_row(ALPHA_3_CODE="AG38",ISSCAAP=38) %>%
+  add_row(ALPHA_3_CODE="CXX",ISSCAAP=38) %>%
+  add_row(ALPHA_3_CODE="PXX",ISSCAAP=38)
+
+Country_key<-read_csv("https://raw.githubusercontent.com/stefangabos/world_countries/6df35c02872093fe34a3cb9b8c2055b8388edfbb/data/countries/en/world.csv") %>% 
+  mutate(across(starts_with("alpha"),~toupper(.))) %>% 
+  select(alpha2,alpha3,name) %>% 
+  rename(Country_2=alpha2,Country=alpha3)
+
+
+
+```
+
+
+```{r}
+FAO_raw<-read_csv("Data/Raw/FAO/20230314_FAO_data.csv") %>% 
+  select(1,2,3,starts_with("[")) %>% 
+  pivot_longer(cols = starts_with("["),names_to = "Year",values_to = "Catch") %>% 
+  mutate(Year=as.numeric(str_sub(Year,2,5))) %>% 
+  rename(Country=1,ALPHA_3_CODE=2,ISSCAAP=3)%>%
+  group_by(Year,Country,ALPHA_3_CODE,ISSCAAP)%>%
+  summarise(Catch=sum(Catch,na.rm = T))%>%
+  ungroup()%>%
+  mutate(RFMO="FAO") %>% 
+  drop_na()
+
+```
+
+```{r}
+
+#https://iotc.org/data/datasets/latest/NC/SCI
+IOTC_raw<-read_csv("Data/Raw/IOTC/IOTC_data.csv") %>% 
+  #filter(SpGroup=="SHARKS")%>%
+  select(FlCde,"Year/An",SpCde,"Catch/Capture(t)") %>% 
+  rename(Country=1,Year=2,ALPHA_3_CODE=3,Catch=4)%>%
+  group_by(Country,Year,ALPHA_3_CODE,Catch)%>%
+  summarise(Catch=sum(Catch,na.rm=T))%>%
+  ungroup()%>%
+  left_join(Three_Alpha_key) %>% 
+   mutate(RFMO="IOTC") %>% 
+  drop_na()
+  
+```
+
+```{r}
+
+#https://www.wcpfc.int/doc/annual-catch-estimates-2021-data-files
+
+WCPFC_raw<-readxl::read_xlsx("Data/Raw/WCPFC/202303_XLS_WCPFC.xlsx")%>%
+  group_by(YY,FLAG_CODE,SP_CODE)%>%
+  summarise(Catch=sum(SP_MT,na.rm=T))%>%
+  ungroup() %>% 
+  rename(Year =YY,ALPHA_3_CODE=SP_CODE,Country_2=FLAG_CODE)%>%
+  left_join(Three_Alpha_key) %>% 
+  left_join(Country_key %>% select(Country_2,Country)) %>% 
+  select(-Country_2) %>% 
+  mutate(RFMO="WCPFC")
+
+```
+
+```{r}
+#https://www.iattc.org/en-US/Data/Public-domain
+
+IATTC_raw<-read_csv("Data/Raw/IATTC/CatchByFlagGear1918-2021.csv") %>% 
+  select(-ArteGear)%>%
+  rename(Year=1,Country=2,ALPHA_3_CODE=3,Catch=4) %>% 
+  group_by(Year,Country,ALPHA_3_CODE)%>%
+  summarise(Catch=sum(Catch,na.rm = T))%>%
+  ungroup()%>%
+  left_join(Three_Alpha_key) %>% 
+  mutate(RFMO="IATTC") 
+
+
+
+
+```
+
+```{r}
+ICCAT_raw<-readxl::read_xlsx("Data/Raw/ICCAT/t1nc-20230131.xlsx",range = "A4:V94000") %>% 
+  drop_na()%>%
+  #mutate(Group=fct_collapse(SpeciesGrp,SHARKS = c("5-Sharks (other)","4-Sharks (major)"),other_level = "Other"))%>%
+  select(YearC,Species,FleetCode,Qty_t)%>%
+
+  rename(Year=YearC,ALPHA_3_CODE=Species,Country=FleetCode,Catch=Qty_t) %>% 
+  group_by(Year,ALPHA_3_CODE,Country)%>%
+  summarise(Catch=sum(Catch,na.rm = T))%>%
+  ungroup()%>%
+  left_join(Three_Alpha_key) %>% 
+  mutate(RFMO="ICCAT")
+```
+
+```{r}
+Raw_data<-bind_rows(FAO_raw,IOTC_raw)%>%
+  bind_rows(ICCAT_raw)%>%
+  bind_rows(IATTC_raw)%>%
+  bind_rows(WCPFC_raw)%>%
+  drop_na()
+remove(FAO_raw,IATTC_raw,ICCAT_raw,IOTC_raw,WCPFC_raw)
+```
+
+```{r}
+
+```
+
