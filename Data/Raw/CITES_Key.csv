@@ -1,0 +1,44 @@
+﻿ALPHA_3_CODE,Taxonomic_Code,Identifier,Name_En,CITES_II,code,Listing_Year,,,,,,,,,,,,
+RHN,1070500401,2801,Whale shark,TRUE,WS,2003,,,,,,,,,,,OWT,2014
+OCS,1080201011,2810,Oceanic whitetip shark,TRUE,OWT,2014,,,,,,,,,,,POR,2014
+FAL,1080201017,2021,Silky shark,TRUE,Silky,2017,,,,,,,,,,,HH,2014
+BSK,1060100301,2005,Basking shark,TRUE,BS,2003,,,,,,,,,,,HH,2014
+ALV,1060600601,2008,Thresher,TRUE,Thresher,2017,,,,,,,,,,,HH,2014
+PTH,1060600602,2009,Pelagic thresher,TRUE,Thresher,2017,,,,,,,,,,,Manta,2014
+BTH,1060600603,2795,Bigeye thresher,TRUE,Thresher,2017,,,,,,,,,,,Silky,2017
+THR,10606006XX,2007,Thresher sharks nei,TRUE,Thresher,2017,,,,,,,,,,,Thresher,2017
+SMA,1060800201,2011,Shortfin mako,TRUE,Mako,2019,,,,,,,,,,,Mobula,2017
+LMA,1060800203,2797,Longfin mako,TRUE,Mako,2019,,,,,,,,,,,Mako,2019
+MAK,10608002XX,2010,Mako sharks,TRUE,Mako,2019,,,,,,,,,,,Mako,2019
+POR,1060800301,2798,Porbeagle,TRUE,POR,2014,,,,,,,,,,,GF,2019
+WSH,1060800701,2799,Great white shark,TRUE,GWS,2005,,,,,,,,,,,GF,2019
+MSK,10608XXXXX,2796,Mackerel sharks,TRUE,POR,2014,,,,,,,,,,,WS,2003
+LMZ,106XXXXXXX,18564,Mackerel sharks,TRUE,POR,2014,,,,,,,,,,,BS,2003
+SPL,1080300506,2028,Scalloped hammerhead,TRUE,HH,2014,,,,,,,,,,,GWS,2005
+SPZ,1080300501,2822,Smooth hammerhead,TRUE,HH,2014,,,,,,,,,,,,
+SPK,1080300510,2824,Great hammerhead,TRUE,HH,2014,,,,,,,,,,,,
+SPN,10803005XX,2821,Hammerhead sharks nei,TRUE,HH,2014,,,,,,,,,,,,
+SPY,10803XXXXX,2027,Hammerhead sharks,TRUE,HH,2014,,,,,,,,,,,,
+RCD,1100100402,15003,Giant guitarfish,TRUE,GF,2019,,,,,,,,,,,,
+RCL,1100100403,15004,African wedgefish,TRUE,GF,2019,,,,,,,,,,,,
+GUZ,11001005XX,2846,Guitarfishes nei,TRUE,GF,2019,,,,,,,,,,,,
+RBR,1100100530,14942,Granulated guitarfish,TRUE,GF,2019,,,,,,,,,,,,
+RRY,1100101401,14928,Bowmouth guitarfish,TRUE,GF,2019,,,,,,,,,,,,
+GTF,11001XXXXX,2048,Guitarfishes,TRUE,GF,2019,,,,,,,,,,,,
+RMA,1100800701,13368,,TRUE,Manta,2014,,,,,,,,,,,,
+RMB,1100800702,13369,Giant manta,TRUE,Manta,2014,,,,,,,,,,,,
+MNT,11008007XX,18608,Manta rays,TRUE,Manta,2014,,,,,,,,,,,,
+RMC,1100801001,13498,,TRUE,Mobula,2017,,,,,,,,,,,,
+RME,1100801003,13500,Longhorned mobula,TRUE,Mobula,2017,,,,,,,,,,,,
+RMH,1100801004,13501,Lesser devil ray,TRUE,Mobula,2017,,,,,,,,,,,,
+RMJ,1100801005,13502,Spinetail mobula,TRUE,Mobula,2017,,,,,,,,,,,,
+RMK,1100801006,13503,Shortfin devil ray,TRUE,Mobula,2017,,,,,,,,,,,,
+RMM,1100801007,13504,Devil fish,TRUE,Mobula,2017,,,,,,,,,,,,
+RMU,1100801008,13505,Munk's devil ray,TRUE,Mobula,2017,,,,,,,,,,,,
+RMR,1100801009,13506,,TRUE,Mobula,2017,,,,,,,,,,,,
+RMN,1100801010,13507,Lesser Guinean devil ray,TRUE,Mobula,2017,,,,,,,,,,,,
+RMT,1100801011,13508,Chilean devil ray,TRUE,Mobula,2017,,,,,,,,,,,,
+RMO,1100801012,13509,Smoothtail mobula,TRUE,Mobula,2017,,,,,,,,,,,,
+RMV,11008010XX,18767,Mobula nei,TRUE,Mobula,2017,,,,,,,,,,,,
+MAN,11008XXXXX,2063,Mantas,TRUE,Manta,2014,,,,,,,,,,,,
+SAW,11002XXXXX,,Pristidae,TRUE,Sawfishes,2014,,,,,,,,,,,,
